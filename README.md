@@ -7,14 +7,15 @@ A simple chatserver application using asyncio.
 This project was done as part of a challenge to test the capabilities of Python vs Go.
 I accepted the challenge to write the chatserver in Python3.4 using asyncio.
 
-For the sake of making it a relatively realistic test, a rudimentary protocol was introduced
-*CLIENT to SERVER*
-- To register a client with server: 
-  - REG [4 ascii chars for len of data including whitepace] [client name]  (eg: REG 0007 TEST01)
-- To send a message to a client: 
-  - SND [4 ascii chars for message len including whitespace] [target client name] [message]  (eg: SND 0017 TEST01 Heyyyooo!)
+For the sake of making it a relatively realistic test, a rudimentary protocol was introduced.
 
-*SERVER to CLIENT*
+**CLIENT to SERVER**
+- To register a client with server: 
+  - REG [4 ascii chars for len of data including whitepace] [client name]  \(eg: REG 0007 TEST01\)
+- To send a message to a client: 
+  - SND [4 ascii chars for message len including whitespace] [target client name] [message]  \(eg: SND 0017 TEST01 Heyyyooo!\)
+
+**SERVER to CLIENT**
 - To forward message from one client to another:
   - RCV [message length] [sender name] [word count] [message]  (eg: RCV 0022 TEST02 0001 Heyyyooo!)
 - To cleanly disconnect with client:
@@ -23,7 +24,7 @@ For the sake of making it a relatively realistic test, a rudimentary protocol wa
 
 ### Status so far
 ----
-*NOTE*: The server application code at this point is incomplete and unoptimized.
+**NOTE**: The server application code at this point is incomplete and unoptimized.
 
 Since this is using asyncio, it is limited by selectors implementation. This means, in Linux, asyncio uses epoll() to setup connections. In which case it can setup about 1024 concurrent connections (by default) before it runs out of file descriptors. So remember to use
 ```bash
